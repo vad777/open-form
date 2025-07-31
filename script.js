@@ -27,7 +27,7 @@ $(document).ready(function() {
       message: $('#message').val().trim() || 'Не вказано'
     };
 
-    emailjs.send('service_zrzuqxl', 'template_46tfesg', {
+    emailjs.send('service_zruq', 'tempate_46tf', {
       from_name: formData.name,
       from_email: formData.email,
       message: formData.message

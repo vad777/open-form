@@ -29,11 +29,10 @@ $(document).ready(function() {
       message: $('#message').val().trim() || 'Не вказано'
     };
 
-    emailjs.send('service_z31m0q4', 'template_8274pvn', {
+    emailjs.send('service_z31m0q4', 'template_46tfesg', {
       from_name: formData.name,
       from_email: formData.email,
-      message: formData.message,
-      to_email: 'bosajo1652@coursora.com'
+      message: formData.message
     })
     .then(function(response) {
       $successMessage.removeClass('hidden').text('Лист успішно відправлено!');

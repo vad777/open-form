@@ -32,18 +32,16 @@ $(document).ready(function() {
     emailjs.send('service_z31m0q4', 'template_46tfesg', {
       from_name: formData.name,
       from_email: formData.email,
-      message: formData.message
+      message: formData.message,
+      to_email: 'bosajo1652@coursora.com' 
     })
     .then(function(response) {
       $successMessage.removeClass('hidden').text('Лист успішно відправлено!');
       $('#contact-form')[0].reset();
     }, function(error) {
-      $emailError.text('Помилка при відправці листа. Спробуйте ще раз.');
+      $emailError.text('Помилка при відправці листа. Спробуйте ще раз. Деталі: ' + error.text);
     });
   });
 });
- 
-
 })(jQuery);
-
-
+```

@@ -6,15 +6,15 @@
   <title>Форма зворотного зв'язку</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script> <!-- Оновлений SDK -->
 </head>
 <body>
   <div class="container">
     <h1>Форма зворотного зв'язку</h1>
     <form id="contact-form">
       <div class="form-group">
-        <label for="name">Ім'я</label>
-        <input type="text" id="name" name="name" placeholder="Введіть ваше ім'я">
+        <label for="name">Ім’я</label>
+        <input type="text" id="name" name="name" placeholder="Введіть ваше ім’я">
       </div>
       <div class="form-group">
         <label for="email">Email <span class="required">*</span></label>
@@ -27,7 +27,7 @@
       </div>
       <button type="submit">Відправити</button>
     </form>
-    <div id="success-message" class="success hidden">Лист успішно відправлено!</div>
+    <div id="success-message" class="success hidden">Лист підготовлено до відправки!</div>
   </div>
   <script src="script.js"></script>
 </body>

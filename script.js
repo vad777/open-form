@@ -24,13 +24,15 @@ $(document).ready(function() {
     const formData = {
       name: $('#name').val().trim() || 'Не вказано',
       email: email,
-      message: $('#message').val().trim() || 'Не вказано'
+      message: $('#message').val().trim() || 'Не вказано',
+      subject: '6weeks - Форма заповнена'
     };
 
     emailjs.send('service_zrzuqxl', 'template_46tfesg', {
       from_name: formData.name,
       from_email: formData.email,
-      message: formData.message
+      message: formData.message,
+      subject: formData.subject
     })
     .then(function(response) {
       $successMessage.removeClass('hidden').text('Лист успішно відправлено!');

@@ -1,48 +1,35 @@
-(function ($) {
-    $(document).ready(function() {
-        emailjs.init("YOUR_PUBLIC_KEY"); // Замініть YOUR_PUBLIC_KEY на ваш публічний ключ EmailJS
+$(document).ready(function() {
+  $('#contact-form').on('submit', function(e) {
+    const email = $('#email').val().trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const $emailError = $('#email-error');
+    const $successMessage = $('#success-message');
 
-        $('#contact-form').on('submit', function(e) {
-            e.preventDefault();
+    $emailError.text('');
+    $successMessage.addClass('hidden');
 
-            const email = $('#email').val().trim();
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const $emailError = $('#email-error');
-            const $successMessage = $('#success-message');
+    if (!email) {
+      $emailError.text('Поле Email є обов’язковим');
+      e.preventDefault();
+      return;
+    }
 
-            $emailError.text('');
-            $successMessage.addClass('hidden');
+    if (!emailRegex.test(email)) {
+      $emailError.text('Введіть коректний email');
+      e.preventDefault();
+      return;
+    }
 
-            if (!email) {
-                $emailError.text('Поле Email є обов’язковим');
-                return;
-            }
-
-            if (!emailRegex.test(email)) {
-                $emailError.text('Введіть коректний email');
-                return;
-            }
-
-            const formData = {
-                name: $('#name').val().trim() || 'Не вказано',
-                email: email,
-                message: $('#message').val().trim() || 'Не вказано'
-            };
-
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
-                from_name: formData.name,
-                from_email: formData.email,
-                message: formData.message,
-                to_email: '6weeks.13h@gmail.com'
-            })
-                .then(function(response) {
-                    $successMessage.removeClass('hidden').text('Лист успішно відправлено!');
-                    $('#contact-form')[0].reset();
-                }, function(error) {
-                    $emailError.text('Помилка при відправці листа. Спробуйте ще раз.');
-                });
-        });
-    });
-
-
-})(jQuery);
+    // Формуємо тіло листа для mailto
+    const name = $('#name').val().trim() || 'Не вказано';
+    const message = $('#message').val().trim() || 'Не вказано';
+    const subject = encodeURIComponent('6weeks - Форма заповнена');
+    const body = encodeURIComponent(`Ім'я: ${name}\nEmail: ${email}\nПовідомлення: ${message}`);
+    
+    // Оновлюємо атрибут action форми
+    $(this).attr('action', `mailto:6weeks.13h@gmail.com?subject=${subject}&body=${body}`);
+    
+    $successMessage.removeClass('hidden').text('Лист підготовлено до відправки!');
+  });
+});
+```

@@ -29,7 +29,7 @@ $(document).ready(function() {
       message: $('#message').val().trim() || 'Не вказано'
     };
 
-    emailjs.send('service_z31m0q4', 'template_46tfesg', {
+    emailjs.send('service_zrzuqxl', 'template_46tfesg', {
       from_name: formData.name,
       from_email: formData.email,
       message: formData.message

@@ -73,12 +73,6 @@ button:hover {
   background: #2980b9;
 }
 
-.error {
-  color: #e74c3c;
-  font-size: 0.85rem;
-  margin-top: 0.25rem;
-  display: block;
-}
 
 .success {
   text-align: center;
@@ -88,4 +82,16 @@ button:hover {
 
 .hidden {
   display: none;
+}
+.error {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+    display: block;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.error:empty {
+    opacity: 0;
 }

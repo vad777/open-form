@@ -1,6 +1,6 @@
 (function ($) {
 $(document).ready(function() {
-  emailjs.init("4e6kyH4oLvc8nBdw1"); 
+  emailjs.init("4e6kyH4oLvc8nBdw1"); // Ваш Public Key
 
   $('#contact-form').on('submit', function(e) {
     e.preventDefault();
@@ -32,16 +32,14 @@ $(document).ready(function() {
     emailjs.send('service_z31m0q4', 'template_46tfesg', {
       from_name: formData.name,
       from_email: formData.email,
-      message: formData.message,
-      to_email: 'bosajo1652@coursora.com' 
+      message: formData.message
     })
     .then(function(response) {
       $successMessage.removeClass('hidden').text('Лист успішно відправлено!');
       $('#contact-form')[0].reset();
     }, function(error) {
-      $emailError.text('Помилка при відправці листа. Спробуйте ще раз. Деталі: ' + error.text);
+      $emailError.text('Помилка при відправці листа. Деталі: ' + error.text);
     });
   });
 });
 })(jQuery);
-```

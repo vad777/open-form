@@ -39,5 +39,16 @@ $(document).ready(function() {
       $emailError.text('Помилка при відправці листа. Деталі: ' + error.text);
     });
   });
+
+  $('#email').on('input', function() {
+            let email = $(this).val();
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email) && email !== '') {
+                $('#email-error').text('Будь ласка, введіть коректний email');
+            } else {
+                $('#email-error').text('');
+            }
+        });
 });
 })(jQuery);

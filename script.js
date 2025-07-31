@@ -26,7 +26,7 @@ $(document).ready(function() {
     const subject = encodeURIComponent('6weeks - Форма заповнена');
     const body = encodeURIComponent(`Ім'я: ${name}\nEmail: ${email}\nПовідомлення: ${message}`);
 
-    window.location.href = `mailto:6weeks.13h@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:bosajo1652@coursora.com?subject=${subject}&body=${body}`;
 
     $successMessage.removeClass('hidden').text('Лист підготовлено до відправки!');
     $('#contact-form')[0].reset();

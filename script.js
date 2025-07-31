@@ -1,7 +1,5 @@
 (function ($) {
 $(document).ready(function() {
-  emailjs.init("4e6kyH4oLvc8nBdw1"); // Ваш Public Key
-
   $('#contact-form').on('submit', function(e) {
     e.preventDefault();
 

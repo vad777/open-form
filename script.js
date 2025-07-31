@@ -1,5 +1,7 @@
 (function ($) {
 $(document).ready(function() {
+  emailjs.init("4e6kyH4oLvc8nBdw1"); 
+
   $('#contact-form').on('submit', function(e) {
     e.preventDefault();
 
@@ -21,15 +23,24 @@ $(document).ready(function() {
       return;
     }
 
-    const name = $('#name').val().trim() || 'Не вказано';
-    const message = $('#message').val().trim() || 'Не вказано';
-    const subject = encodeURIComponent('6weeks - Форма заповнена');
-    const body = encodeURIComponent(`Ім'я: ${name}\nEmail: ${email}\nПовідомлення: ${message}`);
+    const formData = {
+      name: $('#name').val().trim() || 'Не вказано',
+      email: email,
+      message: $('#message').val().trim() || 'Не вказано'
+    };
 
-    window.location.href = `mailto:bosajo1652@coursora.com?subject=${subject}&body=${body}`;
-
-    $successMessage.removeClass('hidden').text('Лист підготовлено до відправки!');
-    $('#contact-form')[0].reset();
+    emailjs.send('service_z31m0q4', 'template_8274pvn', {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+      to_email: 'bosajo1652@coursora.com'
+    })
+    .then(function(response) {
+      $successMessage.removeClass('hidden').text('Лист успішно відправлено!');
+      $('#contact-form')[0].reset();
+    }, function(error) {
+      $emailError.text('Помилка при відправці листа. Спробуйте ще раз.');
+    });
   });
 });
  
